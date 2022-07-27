@@ -1,0 +1,49 @@
+<h2>Todo</h2>
+
+<div class="newTodo centerBox">
+    <div>
+        <label for="new-text">Text: </label>
+        <input id="new-text" #todoText />
+    </div>
+    <div>
+        <label for="new-status">Status: </label>
+        <input id="new-status" #todoStatus />
+    </div>
+    <button type="button" class="add-button controlButton"
+        (click)="add(todoText.value,todoStatus.value); todoText.value='';todoStatus.value=''">
+        Todo hinzufügen
+    </button>
+</div>
+
+<div class="searchTodo centerBox">
+    <div>
+        <label for="new-text">Id: </label>
+        <input id="new-text" #todoId (keypress)="($event.charCode >= 48 && $event.charCode < 58)" />
+    </div>
+    <button type="button" class="button controlButton" (click)="search(todoId.value); todoId.value=''">
+        Nach ID suchen
+    </button>
+</div>
+
+<div class="listTodo centerBox">
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Text</td>
+                <td>Status</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of todos">
+                <td><span>{{todo.id}}</span></td>
+                <td><span>{{todo.text}}</span></td>
+                <td><span>{{todo.status}}</span></td>
+                <td><button type="button" (click)="onSelect(todo)">
+                        <span>select</span></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-todo-detail [todo]="selectedTodo"></app-todo-detail>

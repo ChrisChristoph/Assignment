@@ -1,0 +1,11 @@
+<div *ngIf="todo" class="form-popup">
+    <div class="form-container">
+        <button class="hideButton" type="button" (click)="hideDetail()">X</button>
+        <h2>Todo Details</h2>
+        <div class="detailBox">
+        <diV><span>id: </span>{{todo.id}}</diV>
+        <diV><span>Text: </span>{{todo.text}}</diV>
+        <diV><span>Status: </span>{{todo.status}}</diV>
+        </div>
+    </div>
+</div>
